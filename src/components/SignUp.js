@@ -10,6 +10,14 @@ const signupFormStyle = {
   "padding": "30px"
 };
 
+const buttonStyle = {
+  width: "200px",
+  height: "50px",
+  margin: "20px auto",
+  fontSize: "25px",
+  fontWeight: "bold",
+}
+
 export default function SignUp() {
   const [formData, setFormData] = useState({
     first_name : "",
@@ -137,7 +145,7 @@ export default function SignUp() {
           </select>
         </div>
         <div className="col-12" style={{"textAlign": "center"}}>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" style={buttonStyle}>
             SIGN UP
           </button>
         </div>
