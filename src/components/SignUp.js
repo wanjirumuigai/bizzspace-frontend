@@ -72,13 +72,13 @@ export default function SignUp() {
 
   return (
     <>
-      <h2 style={{"textAlign": "center","margin": "30px auto"}}>Create a BizzSpace Account</h2>
+      <h2 style={{"textAlign": "center","margin": "30px auto"}}>BizzSpace SignUp</h2>
       {errors ? <p style={{"textAlign": "center","margin": "10px auto", "color": "red"}}>{errors}</p> : null}
       <div style={signupFormStyle}>
         <form className="row g-3" onSubmit={handleSubmit}>
           {/* Names */}
           <div className="col-md-6">
-            <label for="inputFirstName" className="form-label">
+            <label htmlFor="inputFirstName" className="form-label">
               First Name
             </label>
             <input
@@ -92,7 +92,7 @@ export default function SignUp() {
             />
           </div>
           <div className="col-md-6">
-            <label for="inputLastName" className="form-label">
+            <label htmlFor="inputLastName" className="form-label">
               Last Name
             </label>
             <input
@@ -107,7 +107,7 @@ export default function SignUp() {
           </div>
           {/* Email + Tel */}
           <div className="col-md-6">
-            <label for="inputEmail" className="form-label">
+            <label htmlFor="inputEmail" className="form-label">
               Email
             </label>
             <input
@@ -121,7 +121,7 @@ export default function SignUp() {
             />
           </div>
           <div className="col-md-6">
-            <label for="inputTelephone" className="form-label">
+            <label htmlFor="inputTelephone" className="form-label">
               Telephone No
             </label>
             <input
@@ -137,7 +137,7 @@ export default function SignUp() {
 
           {/* Password Confirmation */}
           <div className="col-md-6">
-            <label for="inputPassword" className="form-label">
+            <label htmlFor="inputPassword" className="form-label">
               Password
             </label>
             <input
@@ -151,7 +151,7 @@ export default function SignUp() {
             />
           </div>
           <div className="col-md-6">
-            <label for="inputPasswordConfirmation" className="form-label">
+            <label htmlFor="inputPasswordConfirmation" className="form-label">
               Confirm Password
             </label>
             <input
@@ -166,7 +166,7 @@ export default function SignUp() {
           </div>
           {/* Choose user role */}
           <div className="col-md-12">
-            <label for="inputRole" className="form-label">
+            <label htmlFor="inputRole" className="form-label">
               I want to:
             </label>
             <select

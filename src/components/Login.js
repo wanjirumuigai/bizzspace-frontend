@@ -1,4 +1,20 @@
-import { useState } from "react";
+const loginFormStyle = {
+  display: "flex",
+  width: "30%",
+  border: "1px solid #000",
+  borderRadius: "20px",
+  margin: "30px auto",
+  padding: "30px",
+};
+
+const buttonStyle = {
+  width: "200px",
+  height: "50px",
+  margin: "0 auto",
+  fontSize: "25px",
+  fontWeight: "bold",
+};
+
 
 export default function Login() {
   return (
@@ -7,11 +23,11 @@ export default function Login() {
         BizzSpace Login
       </h2>
 
-      <div>
+      <div style={loginFormStyle}>
         <form className="row g-3">
           {/* Email */}
           <div className="col-md-12">
-            <label for="inputEmail" className="form-label">
+            <label htmlFor="inputEmail" className="form-label">
               Email
             </label>
             <input
@@ -25,7 +41,7 @@ export default function Login() {
 
           {/* Password Confirmation */}
           <div className="col-md-12">
-            <label for="inputPassword" className="form-label">
+            <label htmlFor="inputPassword" className="form-label">
               Password
             </label>
             <input
@@ -37,7 +53,7 @@ export default function Login() {
             />
           </div>
           <div className="col-12" style={{ textAlign: "center" }}>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary" style={buttonStyle}>
               LOGIN
             </button>
           </div>
