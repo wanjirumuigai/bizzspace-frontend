@@ -54,6 +54,18 @@ button {
 .off {
   color: #ccc;
 }
+Button.add {
+  background-color: #89ec89;
+
+}
+/* Button.remove {
+  background-color: red;
+} */
+.booked {
+  color: red;
+  text-decoration: line-through;
+
+}
 
 @keyframes App-logo-spin {
   from {
