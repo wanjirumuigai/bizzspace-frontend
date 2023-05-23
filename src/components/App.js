@@ -10,8 +10,8 @@ function App() {
         <h1>BizzSpace</h1>
         <Routes>
           <Route path="/spaces/:id" element={<ViewOneSpace />} />
+          <Route path="/" element={<SpaceContainer />} />
         </Routes>
-        <SpaceContainer />
       </header>
     </div>
   );

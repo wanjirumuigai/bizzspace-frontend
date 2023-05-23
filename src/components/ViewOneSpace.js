@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+
 import {
-  Alert,
   Box,
   Button,
   ButtonBase,
   Card,
-  CardActions,
   CardContent,
   FormControlLabel,
-  FormLabel,
   Grid,
   Paper,
   Radio,
@@ -18,7 +16,9 @@ import {
   Rating,
   TextField,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import ConfirmBox from "./ConfirmBox";
+import { purple } from "@mui/material/colors";
 
 export default function ViewOneSpace() {
   const [spaces, setSpaces] = useState([]);
@@ -28,8 +28,11 @@ export default function ViewOneSpace() {
 
   const [comment, setComments] = useState([]);
   const [review, setReview] = useState("");
-  const [classname, updateClass] = useState(false);
-  const spaceBookedClass = classname ? "booked" : "";
+
+  const [open, setOpen] = useState(false);
+  const [deleteData, setDeleteData] = useState({});
+  const navigate = useNavigate();
+
   const Img = styled("img")({
     margin: "auto",
     display: "block",
@@ -37,6 +40,13 @@ export default function ViewOneSpace() {
     maxHeight: "100%",
   });
   let { id } = useParams();
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(purple[500]),
+    backgroundColor: purple[500],
+    "&:hover": {
+      backgroundColor: purple[700],
+    },
+  }));
   useEffect(() => {
     fetch(`/spaces/${id}`)
       .then((res) => res.json())
@@ -48,12 +58,6 @@ export default function ViewOneSpace() {
   }, []);
 
   function handleBooking() {
-    updateClass((current) => !current);
-    console.log(classname);
-    if (classname == false) {
-      document.querySelector("#booking").disabled = true;
-      document.querySelector("#booking").className = "booked";
-    }
     fetch(`/spaces/${id}`, {
       method: "PATCH",
       headers: {
@@ -89,8 +93,17 @@ export default function ViewOneSpace() {
       .then((data) => setComments(...comment, data));
   }
 
-  function handleDelete() {
-    alert("are you sure?");
+  function openDelete(data) {
+    setOpen(true);
+    setDeleteData(data);
+  }
+  function deleteSpace() {
+    fetch(`/spaces/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => console.log(spaces));
+    navigate("/");
   }
 
   return (
@@ -105,8 +118,9 @@ export default function ViewOneSpace() {
             theme.palette.mode === "dark" ? "#1A2027" : "#fff",
         }}
       >
-        <Button size="small">DELETE</Button>
-        <Button size="small">CLOSE</Button>
+        <Button size="small" onClick={() => navigate("/")}>
+          CLOSE
+        </Button>
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase sx={{ width: 700, height: 350 }}>
@@ -126,39 +140,44 @@ export default function ViewOneSpace() {
               <Typography variant="body2" color="text.secondary">
                 {spaces.size} square feet
               </Typography>
+              <ColorButton variant="contained">
+                Ksh. {spaces.lease_cost}.00
+              </ColorButton>
+
               <Typography variant="body2" color="text.secondary">
-                Kshs. {spaces.lease_cost}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                className={spaceBookedClass}
-              >
                 {/* <Button className="add" onClick={handleBooking} id="booking">
                   {spaces.is_taken ? "Not Available" : "Book"}
                 </Button> */}
               </Typography>
+              <br />
+              {spaces.is_taken ? (
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleBooking}
+                  id="booking"
+                  disabled
+                >
+                  Not Available
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleBooking}
+                  id="booking"
+                >
+                  Book
+                </Button>
+              )}
 
-              <Button
-                variant="contained"
-                color="success"
-                onClick={handleBooking}
-                id="booking"
-              >
-                {spaces.is_taken ? "Not Available" : "Book"}
-              </Button>
-              <Button variant="outlined" color="error" onClick={handleDelete}>
+              <Button variant="outlined" color="error" onClick={openDelete}>
                 Delete Listing
               </Button>
             </Grid>
-            <Grid item></Grid>
-          </Grid>
-          <Grid item>
-            <Typography variant="subtitle1" component="div">
-              Kshs. {spaces.lease_cost}
-            </Typography>
           </Grid>
         </Grid>
+        <Grid item></Grid>
 
         <Box
           sx={{
@@ -213,7 +232,9 @@ export default function ViewOneSpace() {
           </RadioGroup>
         </Box>
         <Box>
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button variant="contained" onClick={handleSubmit}>
+            Post Review
+          </Button>
         </Box>
         <Card sx={{ minWidth: 150 }}>
           <CardContent>
@@ -238,6 +259,12 @@ export default function ViewOneSpace() {
           </CardContent>
         </Card>
       </Paper>
+      <ConfirmBox
+        open={open}
+        closeDialog={() => setOpen(false)}
+        deleteFunction={deleteSpace}
+        title={spaces.name}
+      />
     </>
   );
 }
