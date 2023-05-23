@@ -85,6 +85,7 @@ export default function SignUp() {
             className="form-control"
             id="inputFirstName"
             name="first_name"
+            required
             onChange={handleChange}
             value={formData.first_name}
           />
@@ -98,6 +99,7 @@ export default function SignUp() {
             className="form-control"
             id="inputLastName"
             name="last_name"
+            required
             onChange={handleChange}
             value={formData.last_name}
           />
@@ -112,6 +114,7 @@ export default function SignUp() {
             className="form-control"
             id="inputEmail"
             name="email"
+            required
             onChange={handleChange}
             value={formData.email}
           />
@@ -125,6 +128,7 @@ export default function SignUp() {
             className="form-control"
             id="inputTelephone"
             name="telephone_no"
+            required
             onChange={handleChange}
             value={formData.telephone_no}
           />
@@ -140,6 +144,7 @@ export default function SignUp() {
             className="form-control"
             id="inputPassword"
             name="password"
+            required
             onChange={handleChange}
             value={formData.password}
           />
@@ -153,6 +158,7 @@ export default function SignUp() {
             className="form-control"
             id="inputPasswordConfirmation"
             name="password_confirmation"
+            required
             onChange={handleChange}
             value={formData.password_confirmation}
           />
@@ -162,7 +168,7 @@ export default function SignUp() {
           <label for="inputRole" className="form-label">
             I want to:
           </label>
-          <select id="inputRole" className="form-select" name="role" onChange={handleChange}>
+          <select id="inputRole" className="form-select" name="role" onChange={handleChange} required>
             <option selected disabled>
               Choose...
             </option>
