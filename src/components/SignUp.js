@@ -19,6 +19,7 @@ const buttonStyle = {
 }
 
 export default function SignUp() {
+  const [user, setUser] = useState(null)
   const [formData, setFormData] = useState({
     first_name : "",
     last_name: "",
@@ -43,7 +44,32 @@ export default function SignUp() {
   function handleSubmit(e){
     e.preventDefault()
 
-    console.log(formData)
+    fetch("http://127.0.0.1:3000/signup", {
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then( res => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setUser(user)
+          setFormData({
+            first_name : "",
+            last_name: "",
+            password: "",
+            password_confirmation: "",
+            telephone_no: "",
+            email: "",
+            role: ""
+          })
+        });
+      } else {
+        res.json().then((err) => console.log(err.error));
+      }
+    })
   }
 
   return (
