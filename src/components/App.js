@@ -1,5 +1,5 @@
 import "../App.css";
-import SignUp from "./SignUp";
+import Login from "./Login";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
     //     <h1>BizzSpace</h1>
     //   </header>
     // </div>
-      <SignUp />
+      <Login />
   );
 }
 
