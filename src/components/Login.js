@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const loginFormStyle = {
   display: "flex",
   width: "30%",
@@ -15,16 +17,57 @@ const buttonStyle = {
   fontWeight: "bold",
 };
 
-
 export default function Login() {
+  const [user, setUser] = useState(null);
+  const [errors, setErrors] = useState();
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  function handleChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setLoginForm({ ...loginForm, [name]: value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("http://127.0.0.1:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(loginForm),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setUser(user);
+          setLoginForm({
+            email: "",
+            password: "",
+          });
+        });
+      } else {
+        res.json().then((err) => setErrors(err.error));
+      }
+    });
+  }
+
   return (
     <>
       <h2 style={{ textAlign: "center", margin: "30px auto" }}>
         BizzSpace Login
       </h2>
-
+      {errors ? (
+        <p style={{ textAlign: "center", margin: "10px auto", color: "red" }}>
+          {errors}
+        </p>
+      ) : null}
       <div style={loginFormStyle}>
-        <form className="row g-3">
+        <form className="row g-3" onSubmit={handleSubmit}>
           {/* Email */}
           <div className="col-md-12">
             <label htmlFor="inputEmail" className="form-label">
@@ -36,6 +79,8 @@ export default function Login() {
               id="inputEmail"
               name="email"
               required
+              onChange={handleChange}
+              value={loginForm.email}
             />
           </div>
 
@@ -50,10 +95,16 @@ export default function Login() {
               id="inputPassword"
               name="password"
               required
+              onChange={handleChange}
+              value={loginForm.password}
             />
           </div>
           <div className="col-12" style={{ textAlign: "center" }}>
-            <button type="submit" className="btn btn-primary" style={buttonStyle}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={buttonStyle}
+            >
               LOGIN
             </button>
           </div>
