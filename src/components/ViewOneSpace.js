@@ -26,7 +26,7 @@ export default function ViewOneSpace() {
   const rating_average = value.reduce((a, b) => a + b, 0) / value.length;
   const [rating, setRating] = useState(0);
 
-  const [comment, setComments] = useState([]);
+  const [comments, setComments] = useState([]);
   const [review, setReview] = useState("");
 
   const [open, setOpen] = useState(false);
@@ -51,11 +51,11 @@ export default function ViewOneSpace() {
     fetch(`/spaces/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setSpaces(data.space);
-        setValue(data.space.reviews.map((item) => item.rating));
-        setComments(data.space.reviews.map((item) => item.comment));
+        setSpaces(data);
+        setValue(data.reviews.map((item) => item.rating));
+        setComments(data.reviews.map((item) => item.comment));
       });
-  }, []);
+  }, [spaces.is_taken]);
 
   function handleBooking() {
     fetch(`/spaces/${id}`, {
@@ -66,7 +66,7 @@ export default function ViewOneSpace() {
       body: JSON.stringify({ is_taken: true, leased_by_id: 2 }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setSpaces(data));
   }
 
   function handleChange(e) {
@@ -76,7 +76,6 @@ export default function ViewOneSpace() {
     setRating(e.target.value);
   }
   function handleSubmit() {
-    console.log(review, rating);
     fetch(`/reviews`, {
       method: "POST",
       headers: {
@@ -90,7 +89,11 @@ export default function ViewOneSpace() {
       }),
     })
       .then((res) => res.json())
-      .then((data) => setComments(...comment, data));
+      .then((data) => {
+        setComments([...comments, data.comment]);
+        setRating([...rating, data.rating]);
+        window.location.reload(false);
+      });
   }
 
   function openDelete(data) {
@@ -251,7 +254,7 @@ export default function ViewOneSpace() {
               color="text.secondary"
               backgroundColor="lightgrey"
             >
-              {comment.map((item) => {
+              {comments.map((item) => {
                 return <p> {item} </p>;
               })}
             </Typography>

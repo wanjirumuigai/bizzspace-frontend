@@ -17,7 +17,7 @@ export default function SpaceCard() {
     fetch("/spaces")
       .then((res) => res.json())
       .then((data) => {
-        setSpaces(data.spaces);
+        setSpaces(data);
       });
   }, []);
 
