@@ -19,6 +19,7 @@ const buttonStyle = {
 
 export default function SignUp() {
   const [user, setUser] = useState(null);
+  const [errors, setErrors] = useState(null)
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -64,7 +65,7 @@ export default function SignUp() {
           });
         });
       } else {
-        res.json().then((err) => console.log(err.error));
+        res.json().then((err) => setErrors(err.error));
       }
     });
   }
@@ -72,6 +73,7 @@ export default function SignUp() {
   return (
     <>
       <h2 style={{"textAlign": "center","margin": "30px auto"}}>Create a BizzSpace Account</h2>
+      {errors ? <p style={{"textAlign": "center","margin": "10px auto", "color": "red"}}>{errors}</p> : null}
       <div style={signupFormStyle}>
         <form className="row g-3" onSubmit={handleSubmit}>
           {/* Names */}
