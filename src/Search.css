@@ -1,0 +1,93 @@
+
+/* Styles for the search container */
+.search-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Styles for the search form */
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styles for the search input */
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style for the search button */
+  .search-button {
+    margin-left: 8px;
+    padding: 11px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: medium;
+  }
+
+  /* style for the advanced search button */
+
+  .advanced-search-button {
+    display: inline-block;
+    padding: 2.5px 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: medium;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .advanced-search-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .advanced-search-button:focus {
+    outline: none;
+  }
+  
+  
+  /* Styles for the error message */
+  .error-message {
+    color: rgb(236, 6, 6);
+    font-size:x-large;
+  }
+  
+  /* Styles for the search results */
+  .search-results {
+    margin-top: 16px;
+  }
+  
+  /* Styles for the space card */
+  .space-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  /* Styles for the space card image */
+  .space-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 16px;
+  }
+  
+  /* Styles for the space card title */
+  .space-card h4 {
+    margin-bottom: 8px;
+  }
+  
+  /* Styles for the space card description */
+  .space-card p {
+    color: #777;
+  }
