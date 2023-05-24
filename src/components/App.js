@@ -1,10 +1,13 @@
 import "../App.css";
-import Home from "./Home";
 
 function App() {
   return (
-    <div>{/*className="App"*/}
-      <Home/>
+    <div className="App">
+      <NavBar />
+      <header className="App-header">
+        <h1>BizzSpace</h1>
+      </header>
+
     </div>
   );
 }
