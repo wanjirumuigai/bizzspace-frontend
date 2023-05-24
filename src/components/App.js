@@ -1,5 +1,4 @@
 import "../App.css";
-import NavBar from "./NavBar";
 
 function App() {
   return (
@@ -8,6 +7,7 @@ function App() {
       <header className="App-header">
         <h1>BizzSpace</h1>
       </header>
+
     </div>
   );
 }

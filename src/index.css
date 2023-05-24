@@ -78,6 +78,7 @@ body {
     margin-right: 30px;
   }
 }
+
 @media (max-width: 600px) {
   .menu-icon {
     display: block;
@@ -105,3 +106,10 @@ body {
     margin-top: 22px;
   }
 }
+
+
+/* .searchfilterunderlayimage {
+  background-image: url("./assets/image.JPG");
+} */
+
+
