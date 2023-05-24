@@ -88,6 +88,8 @@ export default function ViewOneSpace({ user }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${user.jwt}`,
       },
       body: JSON.stringify({ is_taken: true, leased_by_id: 2 }),
     })
@@ -106,6 +108,8 @@ export default function ViewOneSpace({ user }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${user.jwt}`,
       },
       body: JSON.stringify({
         comment: review,
@@ -129,10 +133,14 @@ export default function ViewOneSpace({ user }) {
   function deleteSpace() {
     fetch(`/spaces/${id}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${user.jwt}`,
+      }
     })
       .then((res) => res.json())
-      .then(() => console.log(spaces));
-    navigate("/");
+      .then(() => navigate("/"));
   }
 
   return (
@@ -281,7 +289,7 @@ export default function ViewOneSpace({ user }) {
               backgroundColor="lightgrey"
             >
               {comments.map((item) => {
-                return <p> {item} </p>;
+                return <p key={item.id}> {item} </p>;
               })}
             </Typography>
             <Rating name="read-only" value={rating_average} readOnly />
