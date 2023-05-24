@@ -82,3 +82,68 @@ Button.add {
     transform: rotate(360deg);
   }
 }
+
+/*Adding styling*/
+.searchfilterunderlayimage {
+  background-image: url("./assets/Nairobi_cityscape2.jpg");
+  /* background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; */
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: cover; */
+  /* background-size: 100% 100%; */
+  background-size: cover;
+  height: 15rem;
+  /* object-fit: contain; */
+  padding: 60px;
+}
+
+.stylingfiltersearch {
+  /* max-width: 1000px; */
+  margin: 0px;
+  padding: 32px 120px;
+  /* display: grid; */
+  /* gap: 16px; */
+  /* grid-template-columns: 200px 1fr; */
+  align-items: center;
+  z-index: 15;
+  position: sticky;
+}
+
+#searchinput {
+  float: right;
+}
+
+#h1-in-search-div {
+  text-align: center;
+  color: white;
+}
+
+.search-filter-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(32 14 14 / 50%);
+}
+
+.menu-container {
+  background-color: #ffffff;
+  width: 91%;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 10px;
+  opacity: 0.95;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
