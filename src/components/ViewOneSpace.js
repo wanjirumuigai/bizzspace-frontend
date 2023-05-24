@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { useParams, useNavigate } from "react-router-dom";
+import ConfirmBox from "./ConfirmBox";
+import { purple } from "@mui/material/colors";
 
 import {
   Box,
@@ -16,11 +19,8 @@ import {
   Rating,
   TextField,
 } from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
-import ConfirmBox from "./ConfirmBox";
-import { purple } from "@mui/material/colors";
 
-export default function ViewOneSpace() {
+export default function ViewOneSpace({ user }) {
   const [spaces, setSpaces] = useState([]);
   const [value, setValue] = useState([]);
   const rating_average = value.reduce((a, b) => a + b, 0) / value.length;
@@ -47,15 +47,39 @@ export default function ViewOneSpace() {
       backgroundColor: purple[700],
     },
   }));
+
   useEffect(() => {
-    fetch(`/spaces/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSpaces(data);
-        setValue(data.reviews.map((item) => item.rating));
-        setComments(data.reviews.map((item) => item.comment));
-      });
+    fetch(`/spaces/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type" : "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          navigate("/login")
+        }
+        else {
+          res.json().then((data) => {
+            setSpaces(data);
+            setValue(data.reviews.map((item) => item.rating));
+            setComments(data.reviews.map((item) => item.comment));
+          });
+        }
+      })
   }, [spaces.is_taken]);
+
+  // useEffect(() => {
+  //   fetch(`/spaces/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setSpaces(data);
+  //       setValue(data.reviews.map((item) => item.rating));
+  //       setComments(data.reviews.map((item) => item.comment));
+  //     });
+  // }, [spaces.is_taken]);
 
   function handleBooking() {
     fetch(`/spaces/${id}`, {

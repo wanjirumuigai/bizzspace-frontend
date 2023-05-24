@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const loginFormStyle = {
   display: "flex",
@@ -18,8 +18,8 @@ const buttonStyle = {
   fontWeight: "bold",
 };
 
-export default function Login() {
-  const [user, setUser] = useState(null);
+export default function Login({onLogin}) {
+  const navigate = useNavigate()
   const [errors, setErrors] = useState();
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -35,7 +35,7 @@ export default function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://127.0.0.1:3000/login", {
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,12 +45,14 @@ export default function Login() {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          setUser(user);
+          onLogin(user);
+          localStorage.setItem("jwt", user.jwt)
           setLoginForm({
             email: "",
             password: "",
           });
         });
+        navigate("/")
       } else {
         res.json().then((err) => setErrors(err.error));
       }
