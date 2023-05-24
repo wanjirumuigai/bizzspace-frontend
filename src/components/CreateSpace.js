@@ -7,8 +7,7 @@ size: "",
 image_url: "",					
 location: "",					
 space_type: "",					
-lease_cost: "",					
-is_taken: "",					
+lease_cost: "",									
 user_id: 2,										
 };	
 
@@ -33,7 +32,7 @@ setFormData({
 					
 function handleSubmit(e) {					
    e.preventDefault();					
-   fetch("/spaces", {					
+   fetch("http://localhost:3000/spaces", {					
    method: "POST",					
    headers: {					
    "Content-Type": "application/json",					
@@ -43,9 +42,9 @@ function handleSubmit(e) {
     .then((r) => r.json())					
     .then((newSpace) => {	
        onAddSpace(newSpace);				
-       setFormData(formState);										
-   })
-   navigate(`/space/${CreateSpace.id}`)			
+       setFormData(formState);		
+    //    navigate(`/spaces/${newSpace.id}`)										
+   })	
   }					
 					
 return (		
