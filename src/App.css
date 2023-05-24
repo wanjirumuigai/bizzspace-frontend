@@ -27,6 +27,52 @@
 .App-link {
   color: #61dafb;
 }
+.cards {
+  display: flex;
+  gap: 2rem;
+
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cardMedia:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+Button.add {
+  background-color: #89ec89;
+
+}
+/* Button.remove {
+  background-color: red;
+} */
+.booked {
+  color: red;
+  text-decoration: line-through;
+
+}
+#lease-cost {
+  color:"#fff";
+ background-color: purple;
+ width: 100px;
+ height: 50px;
+ font-size: 40px;
+}
 
 @keyframes App-logo-spin {
   from {
