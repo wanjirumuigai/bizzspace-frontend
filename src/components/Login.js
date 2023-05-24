@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const loginFormStyle = {
   display: "flex",
@@ -110,6 +111,12 @@ export default function Login() {
           </div>
         </form>
       </div>
+      <p>
+        Don't have an account?
+        <NavLink className="nav-link" to="/signup">
+          SignUp
+        </NavLink>
+      </p>
     </>
   );
 }

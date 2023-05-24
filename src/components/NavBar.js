@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom'
-import Logo from './bizlogo.png'
+// import Logo from './bizlogo.png'
 
 const Navbar = () => {
 return (
     <nav className="navbar">
       <div className="container">
       <div className="navbar-brand">
-			<img src= {Logo} alt="logo"/>
+			{/* <img src= {Logo} alt="logo"/> */}
 	   </div>
         <div className="nav-elements">
           <ul>
@@ -23,7 +23,7 @@ return (
               <NavLink className="nav-link" to="/contact">Contact</NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" to="/signup">Sign Up / Log In</NavLink>
+              <NavLink className="nav-link" to="/login">Login / SignUp</NavLink>
             </li>
           </ul>
         </div>
