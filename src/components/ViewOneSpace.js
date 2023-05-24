@@ -48,13 +48,15 @@ export default function ViewOneSpace({ user }) {
     },
   }));
 
+
   useEffect(() => {
     fetch(`/spaces/${id}`, {
       method: "GET",
       headers: {
         "Content-Type" : "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        Authorization: `Bearer ${user.jwt}`,
       }
     })
       .then((res) => {

@@ -1,7 +1,15 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 // import Logo from './bizlogo.png'
 
-const Navbar = () => {
+const Navbar = ({user, onLogout}) => {
+
+  const navigate = useNavigate()
+
+  function handleLogout(){
+    onLogout()
+    navigate("/")
+  }
+
 return (
     <nav className="navbar">
       <div className="container">
@@ -23,7 +31,8 @@ return (
               <NavLink className="nav-link" to="/contact">Contact</NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" to="/login">Login / SignUp</NavLink>
+              {/* <NavLink className="nav-link" to="/login">Login / SignUp</NavLink> */}
+              {!user ? <NavLink className="nav-link" to="/login">Login / SignUp</NavLink> : <NavLink className="nav-link" onClick={handleLogout}>Logout</NavLink>}
             </li>
           </ul>
         </div>

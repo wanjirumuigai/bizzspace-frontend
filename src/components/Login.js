@@ -46,7 +46,8 @@ export default function Login({onLogin}) {
       if (res.ok) {
         res.json().then((user) => {
           onLogin(user);
-          localStorage.setItem("jwt", user.jwt)
+          console.log(user)
+          // localStorage.setItem("jwt", user.jwt)
           setLoginForm({
             email: "",
             password: "",

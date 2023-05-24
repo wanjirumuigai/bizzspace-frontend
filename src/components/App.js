@@ -18,14 +18,15 @@ function App() {
     setUser(null)
   }
 
+  console.log("App: ", user)
   return (
     <div className="App">
-      <NavBar />
+      <NavBar user={user} onLogout={onLogout}/>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<Login onLogin={onLogin}/>} />
+        <Route path="/spaces/:id" element={ user ? <ViewOneSpace user={user} /> : <Login onLogin={onLogin}/>} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/spaces/:id" element={<ViewOneSpace user={user}/>} />
+        <Route path="/login" element={<Login onLogin={onLogin}/>} />
       </Routes>
     </div>
   );
