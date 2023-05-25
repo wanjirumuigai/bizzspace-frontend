@@ -162,7 +162,7 @@ export default function ViewOneSpace({ user }) {
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item>
             <ButtonBase sx={{ width: 700, height: 350 }}>
-              <Img alt="complex" src={spaces.image_url} />
+              <Img alt="complex" src={spaces.image_url} sx={{}}/>
             </ButtonBase>
           </Grid>
         </Grid>
@@ -206,12 +206,7 @@ export default function ViewOneSpace({ user }) {
                 Ksh. {spaces.lease_cost}.00
               </ColorButton>
 
-              <Typography variant="body2" color="text.secondary">
-                {/* <Button className="add" onClick={handleBooking} id="booking">
-                  {spaces.is_taken ? "Not Available" : "Book"}
-                </Button> */}
-              </Typography>
-              <br />
+
               <ButtonGroup
                 sx={{ display: "flex", justifyContent: "center", gap: " 20px" }}
               >
@@ -222,8 +217,8 @@ export default function ViewOneSpace({ user }) {
                     onClick={handleBooking}
                     id="booking"
                     disabled
-                    sx={{ width: "200px", fontWeight: 600, fontSize: "25px" }}
-                  ></Button>
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+                  >Not Available</Button>
                 ) : (
                   <Button
                     variant="contained"
@@ -249,12 +244,12 @@ export default function ViewOneSpace({ user }) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item></Grid>
-
+        <hr style={{"width": "85%", margin: "15px auto 10px"}}/>
         <Box
           sx={{
-            width: 500,
+            width: 600,
             maxWidth: "100%",
+            margin: "30px auto",
           }}
         >
           <TextField
@@ -266,15 +261,17 @@ export default function ViewOneSpace({ user }) {
           />
         </Box>
         <Box>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{fontSize: "20px"}}>
             Rate the Property
           </Typography>
-
+          {/* <hr style={{"width": "35%", margin: "0 auto"}}/> */}
           <RadioGroup
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
             onChange={handleRating}
+            sx={{justifyContent: "center"}}
+            required
           >
             <FormControlLabel
               value="1"
@@ -304,18 +301,19 @@ export default function ViewOneSpace({ user }) {
           </RadioGroup>
         </Box>
         <Box>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button variant="contained" onClick={handleSubmit} sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}>
             Post Review
           </Button>
         </Box>
+          <hr style={{"width": "85%", margin: "30px auto 0"}}/>
         <Card sx={{ minWidth: 150 }}>
           <CardContent>
             <Typography
-              sx={{ fontSize: 14 }}
+              sx={{ fontSize: 25 }}
               color="text.secondary"
               gutterBottom
             >
-              Reviews
+              User Reviews
             </Typography>
             <Typography variant="h5" component="div"></Typography>
             <Typography
@@ -329,11 +327,11 @@ export default function ViewOneSpace({ user }) {
             </Typography>
             <Rating name="read-only" value={rating_average} readOnly />
             <Typography
-              sx={{ fontSize: 11 }}
+              sx={{ fontSize: 15 }}
               color="text.secondary"
               gutterBottom
             >
-              {rating_average}* rating
+              Average Rating: {rating_average ? rating_average : 0}*
             </Typography>
           </CardContent>
         </Card>

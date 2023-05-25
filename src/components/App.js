@@ -19,7 +19,6 @@ function App() {
     setUser(null);
   }
 
-  console.log("App: ", user);
   return (
     <div className="App">
       <NavBar user={user} onLogout={onLogout} />

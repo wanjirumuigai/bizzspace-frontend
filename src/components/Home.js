@@ -30,7 +30,6 @@ function Home() {
     );
     setSearchItems(searchMatch);
   }
-  console.log(spaces);
 
   return (
     <div className="card" style={searchStyle}>
