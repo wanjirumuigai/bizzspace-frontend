@@ -6,13 +6,26 @@ function Search({ handleSearch }) {
   }
   return (
     <div className="search">
-      <label>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search..."
+          aria-label="Search"
+          aria-describedby="search-space"
+          style={{"height": "50px"}}
+        />
+        <span class="input-group-text span-search" id="search-space">
+          Search
+        </span>
+      </div>
+      {/* <label>
         <input
           onKeyUp={handleKeyUp}
-          className="searchTerm"
+          className="searchTerm form-control"
           placeholder="Search space..."
         ></input>
-      </label>
+      </label> */}
     </div>
   );
 }
