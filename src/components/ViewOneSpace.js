@@ -144,6 +144,8 @@ export default function ViewOneSpace({ user }) {
       .then(() => navigate("/"));
   }
 
+  console.log(spaces.user_id, user.user.id);
+
   return (
     <>
       <Paper
@@ -162,7 +164,7 @@ export default function ViewOneSpace({ user }) {
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item>
             <ButtonBase sx={{ width: 700, height: 350 }}>
-              <Img alt="complex" src={spaces.image_url} sx={{}}/>
+              <Img alt="complex" src={spaces.image_url} sx={{}} />
             </ButtonBase>
           </Grid>
         </Grid>
@@ -206,7 +208,6 @@ export default function ViewOneSpace({ user }) {
                 Ksh. {new Intl.NumberFormat().format(spaces.lease_cost)}
               </ColorButton>
 
-
               <ButtonGroup
                 sx={{ display: "flex", justifyContent: "center", gap: " 20px" }}
               >
@@ -218,7 +219,9 @@ export default function ViewOneSpace({ user }) {
                     id="booking"
                     disabled
                     sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
-                  >Not Available</Button>
+                  >
+                    Not Available
+                  </Button>
                 ) : (
                   <Button
                     variant="contained"
@@ -230,7 +233,7 @@ export default function ViewOneSpace({ user }) {
                     Book
                   </Button>
                 )}
-                {user.user.role === "space_owner" ? (
+                {user.user.id === spaces.user_id ? (
                   <Button
                     variant="outlined"
                     color="error"
@@ -244,7 +247,7 @@ export default function ViewOneSpace({ user }) {
             </Grid>
           </Grid>
         </Grid>
-        <hr style={{"width": "85%", margin: "15px auto 10px"}}/>
+        <hr style={{ width: "85%", margin: "15px auto 10px" }} />
         <Box
           sx={{
             width: 600,
@@ -261,7 +264,11 @@ export default function ViewOneSpace({ user }) {
           />
         </Box>
         <Box>
-          <Typography variant="body2" color="text.secondary" sx={{fontSize: "20px"}}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontSize: "20px" }}
+          >
             Rate the Property
           </Typography>
           {/* <hr style={{"width": "35%", margin: "0 auto"}}/> */}
@@ -270,7 +277,7 @@ export default function ViewOneSpace({ user }) {
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
             onChange={handleRating}
-            sx={{justifyContent: "center"}}
+            sx={{ justifyContent: "center" }}
             required
           >
             <FormControlLabel
@@ -301,11 +308,15 @@ export default function ViewOneSpace({ user }) {
           </RadioGroup>
         </Box>
         <Box>
-          <Button variant="contained" onClick={handleSubmit} sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}>
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+          >
             Post Review
           </Button>
         </Box>
-          <hr style={{"width": "85%", margin: "30px auto 0"}}/>
+        <hr style={{ width: "85%", margin: "30px auto 0" }} />
         <Card sx={{ minWidth: 150 }}>
           <CardContent>
             <Typography
