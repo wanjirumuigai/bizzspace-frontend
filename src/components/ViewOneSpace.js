@@ -197,13 +197,13 @@ export default function ViewOneSpace({ user }) {
                   fontWeight: "300",
                 }}
               >
-                {spaces.size} sq. ft
+                {new Intl.NumberFormat().format(spaces.size)} sq. ft
               </Typography>
               <ColorButton
                 variant="contained"
                 sx={{ cursor: "none", margin: "10px auto" }}
               >
-                Ksh. {spaces.lease_cost}.00
+                Ksh. {new Intl.NumberFormat().format(spaces.lease_cost)}
               </ColorButton>
 
 
