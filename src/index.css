@@ -22,7 +22,7 @@ body {
   /* height: 200; */
   padding: 0 70px;
   background-color: #fef7e5;
-  position: relative; 
+  position: relative;
   display:flex;
   flex-direction: column;
   align-items:center;
@@ -147,6 +147,15 @@ margin: 30px 15px;
   }
 }
 
+/* Auth-links */
+
+.auth-link {
+  font-size: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    display: contents;
+}
 
 /* .searchfilterunderlayimage {
   background-image: url("./assets/image.JPG");

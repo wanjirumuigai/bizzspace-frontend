@@ -3,11 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const loginFormStyle = {
   display: "flex",
-  width: "30%",
-  border: "1px solid #000",
-  borderRadius: "20px",
+  width: "23%",
+  height: "386px",
+  border: "1px solid #427b01",
+  borderRadius: "9px",
   margin: "30px auto",
-  padding: "30px",
+  padding: "25px",
 };
 
 const buttonStyle = {
@@ -113,11 +114,8 @@ export default function Login({onLogin}) {
           </div>
         </form>
       </div>
-      <p>
-        Don't have an account?
-        <NavLink className="nav-link" to="/signup">
-          SignUp
-        </NavLink>
+      <p className="to-auth">
+        Don't have an account? <NavLink className="auth-link nav-link" to="/signup">SignUp</NavLink>
       </p>
     </>
   );
