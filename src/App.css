@@ -110,7 +110,7 @@ Button.add {
   /* background-size: cover; */
   /* background-size: 100% 100%; */
   background-size: cover;
-  height: 15rem;
+  height: 30rem;
   /* object-fit: contain; */
   padding: 60px;
 }
@@ -154,6 +154,9 @@ Button.add {
 #h1-in-search-div {
   text-align: center;
   color: white;
+  text-transform: capitalize;
+  font-weight: 800;
+  font-size: 60px;
 }
 
 .search-filter-overlay {
