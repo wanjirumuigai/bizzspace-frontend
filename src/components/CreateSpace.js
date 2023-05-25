@@ -6,10 +6,11 @@ const formStyle = {
   border: "grey solid 1px",
   borderRadius: "11px",
   padding: "30px",
-  margin: "60px auto 20px"
+  margin: "60px auto 20px",
 };
 
 function CreateSpace({ user }) {
+  const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -30,19 +31,21 @@ function CreateSpace({ user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
-    // fetch("http://localhost:3000/spaces", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((r) => r.json())
-    //   .then((newSpace) => {
-    //     onAddSpace(newSpace);
-    //     setFormData(formState);
-    //   });
+    fetch("http://localhost:3000/spaces", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${user.jwt}`,
+      },
+      body: JSON.stringify(formData),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((newSpace) => navigate(`/spaces/${newSpace.id}`));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   }
 
   return (
