@@ -33,7 +33,7 @@ function Home() {
 
   return (
     <div className="card" style={searchStyle}>
-      {/* <img src="..." class="card-img-top" alt="..."/>THIS WILL BE BACKGROUND IMAGE */}
+      {/* <img src="..." className="card-img-top" alt="..."/>THIS WILL BE BACKGROUND IMAGE */}
       <div className="searchfilterunderlayimage">
         <div className="card-body stylingfiltersearch">
           <h1 id="h1-in-search-div">Discover your next business space</h1>
@@ -45,7 +45,7 @@ function Home() {
           </select> */}
           <Search handleSearch={handleSearch} />
         </div>
-        <div class="search-filter-overlay"></div>
+        <div className="search-filter-overlay"></div>
       </div>
 
       <div className="card-body menu-container">

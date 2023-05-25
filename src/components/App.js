@@ -7,6 +7,7 @@ import Home from "./Home";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import ViewOneSpace from "./ViewOneSpace";
+import CreateSpace from "./CreateSpace";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ function App() {
             user ? <ViewOneSpace user={user} /> : <Login onLogin={onLogin} />
           }
         />
+        {user ? <Route path="/spaces/new" element={<CreateSpace user={user}/>} /> : null}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login onLogin={onLogin} />} />
       </Routes>

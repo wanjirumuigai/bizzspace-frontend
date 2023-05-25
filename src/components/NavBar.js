@@ -26,7 +26,7 @@ function NavBar({ user, onLogout }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/space/new">
+                <NavLink className="nav-link" to="/spaces/new">
                   Add Property
                 </NavLink>
               </li>

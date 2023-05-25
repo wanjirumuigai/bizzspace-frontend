@@ -6,16 +6,16 @@ function Search({ handleSearch }) {
   }
   return (
     <div className="search">
-      <div class="input-group mb-3">
+      <div className="input-group mb-3">
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           placeholder="Search..."
           aria-label="Search"
           aria-describedby="search-space"
           style={{"height": "50px"}}
         />
-        <span class="input-group-text span-search" id="search-space">
+        <span className="input-group-text span-search" id="search-space">
           Search
         </span>
       </div>
