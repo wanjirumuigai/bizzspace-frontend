@@ -1,28 +1,38 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "../App.css";
-import NavBar from "./NavBar";
-import CreateSpace from "./CreateSpace";
-import SpaceCard from "./SpaceCard";
 
+import { useState } from "react";
+import {Routes, Route} from "react-router-dom"
+import NavBar from "./NavBar"
+import Home from "./Home"
+import Login from "./Login"
+import SignUp from "./SignUp"
+import ViewOneSpace from "./ViewOneSpace"
 
 function App() {
+  const [user, setUser] = useState(null);
 
-  const [space, setSpace] = useState([]);
+  function onLogin(user){
+    setUser(user)
+  }
 
-  function onAddSpace(spaceItem) {
-    setSpace([...space, spaceItem]);
-    }
+  function onLogout(){
+    setUser(null)
+  }
 
+  console.log("App: ", user)
   return (
-    <>
-       <NavBar />
-       <Routes>
-       <Route path="/home" element={<SpaceCard />} />
-       <Route path="/space/new" element={<CreateSpace onAddSpace={ onAddSpace}/>} />
+    <div className="App">
+      <NavBar user={user} onLogout={onLogout}/>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/spaces/:id" element={ user ? <ViewOneSpace user={user} /> : <Login onLogin={onLogin}/>} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login onLogin={onLogin}/>} />
+      </Routes>
+    </div>
 
-       </Routes>
-    </>
   );
 }
 

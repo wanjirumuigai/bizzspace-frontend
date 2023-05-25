@@ -118,6 +118,7 @@ margin: 30px 15px;
     margin-right: 30px;
   }
 }
+
 @media (max-width: 600px) {
   .menu-icon {
     display: block;
@@ -145,3 +146,10 @@ margin: 30px 15px;
     margin-top: 22px;
   }
 }
+
+
+/* .searchfilterunderlayimage {
+  background-image: url("./assets/image.JPG");
+} */
+
+

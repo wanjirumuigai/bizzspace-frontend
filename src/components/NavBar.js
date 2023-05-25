@@ -1,14 +1,27 @@
-import { NavLink } from 'react-router-dom'
-import Logo from './bizlogo.png'
+import { NavLink, useNavigate } from 'react-router-dom'
+// import Logo from './bizlogo.png'
+
+const Navbar = ({user, onLogout}) => {
+
+  const navigate = useNavigate()
+
+  function handleLogout(){
+    onLogout()
+    navigate("/")
+  }
+
 
 
 function NavBar() {
 
+
 return (
 
     <nav className="navbar">
-    <div className="container">
-    <div className="navbar-brand">
+
+      <div className="container">
+      <div className="navbar-brand">
+			{/* <img src= {Logo} alt="logo"/> */}
 
 	   </div>
         <div className="nav-elements">
@@ -35,7 +48,10 @@ return (
             </li>
 
             <li>
-              <NavLink className="nav-link" to="/signup"> Sign Up / Sign In </NavLink>
+
+              {/* <NavLink className="nav-link" to="/login">Login / SignUp</NavLink> */}
+              {!user ? <NavLink className="nav-link" to="/login">Login / SignUp</NavLink> : <NavLink className="nav-link" onClick={handleLogout}>Logout</NavLink>}
+
             </li>
 
           </ul>
