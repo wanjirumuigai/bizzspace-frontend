@@ -48,29 +48,26 @@ export default function ViewOneSpace({ user }) {
     },
   }));
 
-
   useEffect(() => {
     fetch(`/spaces/${id}`, {
       method: "GET",
       headers: {
-        "Content-Type" : "application/json",
+        "Content-Type": "application/json",
         Accept: "application/json",
-        // Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+
         Authorization: `Bearer ${user.jwt}`,
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        navigate("/login");
+      } else {
+        res.json().then((data) => {
+          setSpaces(data);
+          setValue(data.reviews.map((item) => item.rating));
+          setComments(data.reviews.map((item) => item.comment));
+        });
       }
-    })
-      .then((res) => {
-        if (!res.ok) {
-          navigate("/login")
-        }
-        else {
-          res.json().then((data) => {
-            setSpaces(data);
-            setValue(data.reviews.map((item) => item.rating));
-            setComments(data.reviews.map((item) => item.comment));
-          });
-        }
-      })
+    });
   }, [spaces.is_taken]);
 
   // useEffect(() => {
@@ -91,7 +88,7 @@ export default function ViewOneSpace({ user }) {
         Accept: "application/json",
         Authorization: `Bearer ${user.jwt}`,
       },
-      body: JSON.stringify({ is_taken: true, leased_by_id: 2 }),
+      body: JSON.stringify({ is_taken: true, leased_by_id: user.user.id }),
     })
       .then((res) => res.json())
       .then((data) => setSpaces(data));
@@ -115,14 +112,14 @@ export default function ViewOneSpace({ user }) {
         comment: review,
         rating: rating,
         space_id: id,
-        user_id: 1,
+        user_id: user.user.id,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         setComments([...comments, data.comment]);
         setRating([...rating, data.rating]);
-        window.location.reload(false);
+        // window.location.reload(false);
       });
   }
 
@@ -137,7 +134,7 @@ export default function ViewOneSpace({ user }) {
         "Content-Type": "application/json",
         Accept: "application/json",
         Authorization: `Bearer ${user.jwt}`,
-      }
+      },
     })
       .then((res) => res.json())
       .then(() => navigate("/"));
