@@ -4,11 +4,13 @@ import Typography from "@mui/material/Typography";
 import { useParams, useNavigate } from "react-router-dom";
 import ConfirmBox from "./ConfirmBox";
 import { purple } from "@mui/material/colors";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   Box,
   Button,
   ButtonBase,
+  ButtonGroup,
   Card,
   CardContent,
   FormControlLabel,
@@ -155,28 +157,52 @@ export default function ViewOneSpace({ user }) {
         }}
       >
         <Button size="small" onClick={() => navigate("/")}>
-          CLOSE
+          <CloseIcon className="close-icon" />
         </Button>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item>
             <ButtonBase sx={{ width: 700, height: 350 }}>
               <Img alt="complex" src={spaces.image_url} />
             </ButtonBase>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm container>
+        <Grid item xs={12} sm container sx={{ justifyContent: "center" }}>
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
-              <Typography gutterBottom variant="subtitle1" component="div">
-                {spaces.name}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography
+                gutterBottom
+                variant="subtitle1"
+                component="div"
+                sx={{ fontSize: "1.75rem" }}
+              >
                 {spaces.location}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {spaces.size} square feet
+              <Typography
+                variant="body2"
+                gutterBottom
+                sx={{
+                  lineHeight: "1.25",
+                  fontSize: "1.75rem",
+                  fontWeight: "300",
+                }}
+              >
+                {spaces.name}
               </Typography>
-              <ColorButton variant="contained">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  lineHeight: "1.25",
+                  fontSize: "1.75rem",
+                  fontWeight: "300",
+                }}
+              >
+                {spaces.size} sq. ft
+              </Typography>
+              <ColorButton
+                variant="contained"
+                sx={{ cursor: "none", margin: "10px auto" }}
+              >
                 Ksh. {spaces.lease_cost}.00
               </ColorButton>
 
@@ -186,30 +212,40 @@ export default function ViewOneSpace({ user }) {
                 </Button> */}
               </Typography>
               <br />
-              {spaces.is_taken ? (
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={handleBooking}
-                  id="booking"
-                  disabled
-                >
-                  Not Available
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={handleBooking}
-                  id="booking"
-                >
-                  Book
-                </Button>
-              )}
-
-              <Button variant="outlined" color="error" onClick={openDelete}>
-                Delete Listing
-              </Button>
+              <ButtonGroup
+                sx={{ display: "flex", justifyContent: "center", gap: " 20px" }}
+              >
+                {spaces.is_taken ? (
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleBooking}
+                    id="booking"
+                    disabled
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "25px" }}
+                  ></Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleBooking}
+                    id="booking"
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "25px" }}
+                  >
+                    Book
+                  </Button>
+                )}
+                {user.user.role === "space_owner" ? (
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    onClick={openDelete}
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+                  >
+                    Delete Listing
+                  </Button>
+                ) : null}
+              </ButtonGroup>
             </Grid>
           </Grid>
         </Grid>
