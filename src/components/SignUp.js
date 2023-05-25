@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const signupFormStyle = {
   display: "flex",
@@ -30,6 +30,8 @@ export default function SignUp() {
     email: "",
     role: "",
   });
+
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const name = e.target.name;
@@ -195,11 +197,8 @@ export default function SignUp() {
           </div>
         </form>
       </div>
-      <p>
-        Already have an account?
-        <NavLink className="nav-link" to="/login">
-          Login
-        </NavLink>
+      <p className="to-auth">
+        Already have an account? <NavLink className="auth-link nav-link" to="/login">Login</NavLink>
       </p>
     </>
   );

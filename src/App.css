@@ -1,3 +1,16 @@
+/* NavBar */
+.currentUser {
+  margin: auto 100px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 30px 15px;
+}
+
 .App {
   text-align: center;
 }
@@ -30,7 +43,7 @@
 .cards {
   display: flex;
   gap: 2rem;
-
+  justify-content: center;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
@@ -56,7 +69,6 @@ button {
 }
 Button.add {
   background-color: #89ec89;
-
 }
 /* Button.remove {
   background-color: red;
@@ -64,14 +76,13 @@ Button.add {
 .booked {
   color: red;
   text-decoration: line-through;
-
 }
 #lease-cost {
-  color:"#fff";
- background-color: purple;
- width: 100px;
- height: 50px;
- font-size: 40px;
+  color: "#fff";
+  background-color: purple;
+  width: 100px;
+  height: 50px;
+  font-size: 40px;
 }
 
 @keyframes App-logo-spin {
@@ -99,14 +110,41 @@ Button.add {
   /* background-size: cover; */
   /* background-size: 100% 100%; */
   background-size: cover;
-  height: 15rem;
+  height: 30rem;
   /* object-fit: contain; */
   padding: 60px;
+}
+.search {
+  width: 30%;
+  text-align: center;
+
+  position: relative;
+  display: block;
+  margin: auto;
+  padding: 2rem;
+}
+
+.span-search {
+  background-color: #427b01;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.searchTerm {
+  text-align: center;
+  width: 100%;
+  border: 3px solid skyblue;
+  padding: 5px;
+  height: 2rem;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.5rem;
 }
 
 .stylingfiltersearch {
   /* max-width: 1000px; */
-  margin: 0px;
+  margin-top: 70px;
   padding: 32px 120px;
   /* display: grid; */
   /* gap: 16px; */
@@ -123,6 +161,9 @@ Button.add {
 #h1-in-search-div {
   text-align: center;
   color: white;
+  text-transform: capitalize;
+  font-weight: 800;
+  font-size: 60px;
 }
 
 .search-filter-overlay {

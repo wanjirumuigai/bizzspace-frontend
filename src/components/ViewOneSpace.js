@@ -4,11 +4,13 @@ import Typography from "@mui/material/Typography";
 import { useParams, useNavigate } from "react-router-dom";
 import ConfirmBox from "./ConfirmBox";
 import { purple } from "@mui/material/colors";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   Box,
   Button,
   ButtonBase,
+  ButtonGroup,
   Card,
   CardContent,
   FormControlLabel,
@@ -23,7 +25,9 @@ import {
 export default function ViewOneSpace({ user }) {
   const [spaces, setSpaces] = useState([]);
   const [value, setValue] = useState([]);
-  const rating_average = value.reduce((a, b) => a + b, 0) / value.length;
+  const rating_average = Math.round(
+    value.reduce((a, b) => a + b, 0) / value.length
+  );
   const [rating, setRating] = useState(0);
 
   const [comments, setComments] = useState([]);
@@ -48,29 +52,26 @@ export default function ViewOneSpace({ user }) {
     },
   }));
 
-
   useEffect(() => {
     fetch(`/spaces/${id}`, {
       method: "GET",
       headers: {
-        "Content-Type" : "application/json",
+        "Content-Type": "application/json",
         Accept: "application/json",
-        // Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+
         Authorization: `Bearer ${user.jwt}`,
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        navigate("/login");
+      } else {
+        res.json().then((data) => {
+          setSpaces(data);
+          setValue(data.reviews.map((item) => item.rating));
+          setComments(data.reviews.map((item) => item.comment));
+        });
       }
-    })
-      .then((res) => {
-        if (!res.ok) {
-          navigate("/login")
-        }
-        else {
-          res.json().then((data) => {
-            setSpaces(data);
-            setValue(data.reviews.map((item) => item.rating));
-            setComments(data.reviews.map((item) => item.comment));
-          });
-        }
-      })
+    });
   }, [spaces.is_taken]);
 
   // useEffect(() => {
@@ -91,7 +92,7 @@ export default function ViewOneSpace({ user }) {
         Accept: "application/json",
         Authorization: `Bearer ${user.jwt}`,
       },
-      body: JSON.stringify({ is_taken: true, leased_by_id: 2 }),
+      body: JSON.stringify({ is_taken: true, leased_by_id: user.user.id }),
     })
       .then((res) => res.json())
       .then((data) => setSpaces(data));
@@ -115,14 +116,14 @@ export default function ViewOneSpace({ user }) {
         comment: review,
         rating: rating,
         space_id: id,
-        user_id: 1,
+        user_id: user.user.id,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         setComments([...comments, data.comment]);
         setRating([...rating, data.rating]);
-        window.location.reload(false);
+        // window.location.reload(false);
       });
   }
 
@@ -137,11 +138,13 @@ export default function ViewOneSpace({ user }) {
         "Content-Type": "application/json",
         Accept: "application/json",
         Authorization: `Bearer ${user.jwt}`,
-      }
+      },
     })
       .then((res) => res.json())
       .then(() => navigate("/"));
   }
+
+  console.log(spaces.user_id, user.user.id);
 
   return (
     <>
@@ -156,70 +159,100 @@ export default function ViewOneSpace({ user }) {
         }}
       >
         <Button size="small" onClick={() => navigate("/")}>
-          CLOSE
+          <CloseIcon className="close-icon" />
         </Button>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item>
             <ButtonBase sx={{ width: 700, height: 350 }}>
-              <Img alt="complex" src={spaces.image_url} />
+              <Img alt="complex" src={spaces.image_url} sx={{}} />
             </ButtonBase>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm container>
+        <Grid item xs={12} sm container sx={{ justifyContent: "center" }}>
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
-              <Typography gutterBottom variant="subtitle1" component="div">
-                {spaces.name}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography
+                gutterBottom
+                variant="subtitle1"
+                component="div"
+                sx={{ fontSize: "1.75rem" }}
+              >
                 {spaces.location}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {spaces.size} square feet
+              <Typography
+                variant="body2"
+                gutterBottom
+                sx={{
+                  lineHeight: "1.25",
+                  fontSize: "1.75rem",
+                  fontWeight: "300",
+                }}
+              >
+                {spaces.name}
               </Typography>
-              <ColorButton variant="contained">
-                Ksh. {spaces.lease_cost}.00
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  lineHeight: "1.25",
+                  fontSize: "1.75rem",
+                  fontWeight: "300",
+                }}
+              >
+                {new Intl.NumberFormat().format(spaces.size)} sq. ft
+              </Typography>
+              <ColorButton
+                variant="contained"
+                sx={{ cursor: "none", margin: "10px auto" }}
+              >
+                Ksh. {new Intl.NumberFormat().format(spaces.lease_cost)}
               </ColorButton>
 
-              <Typography variant="body2" color="text.secondary">
-                {/* <Button className="add" onClick={handleBooking} id="booking">
-                  {spaces.is_taken ? "Not Available" : "Book"}
-                </Button> */}
-              </Typography>
-              <br />
-              {spaces.is_taken ? (
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={handleBooking}
-                  id="booking"
-                  disabled
-                >
-                  Not Available
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={handleBooking}
-                  id="booking"
-                >
-                  Book
-                </Button>
-              )}
-
-              <Button variant="outlined" color="error" onClick={openDelete}>
-                Delete Listing
-              </Button>
+              <ButtonGroup
+                sx={{ display: "flex", justifyContent: "center", gap: " 20px" }}
+              >
+                {spaces.is_taken ? (
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleBooking}
+                    id="booking"
+                    disabled
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+                  >
+                    Not Available
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleBooking}
+                    id="booking"
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "25px" }}
+                  >
+                    Book
+                  </Button>
+                )}
+                {user.user.id === spaces.user_id ? (
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    onClick={openDelete}
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+                  >
+                    Delete Listing
+                  </Button>
+                ) : null}
+              </ButtonGroup>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item></Grid>
-
+        <hr style={{ width: "85%", margin: "15px auto 10px" }} />
         <Box
           sx={{
-            width: 500,
+            width: 600,
             maxWidth: "100%",
+            margin: "30px auto",
           }}
         >
           <TextField
@@ -231,15 +264,21 @@ export default function ViewOneSpace({ user }) {
           />
         </Box>
         <Box>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontSize: "20px" }}
+          >
             Rate the Property
           </Typography>
-
+          {/* <hr style={{"width": "35%", margin: "0 auto"}}/> */}
           <RadioGroup
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
             onChange={handleRating}
+            sx={{ justifyContent: "center" }}
+            required
           >
             <FormControlLabel
               value="1"
@@ -269,18 +308,23 @@ export default function ViewOneSpace({ user }) {
           </RadioGroup>
         </Box>
         <Box>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+          >
             Post Review
           </Button>
         </Box>
+        <hr style={{ width: "85%", margin: "30px auto 0" }} />
         <Card sx={{ minWidth: 150 }}>
           <CardContent>
             <Typography
-              sx={{ fontSize: 14 }}
+              sx={{ fontSize: 25 }}
               color="text.secondary"
               gutterBottom
             >
-              Reviews
+              User Reviews
             </Typography>
             <Typography variant="h5" component="div"></Typography>
             <Typography
@@ -293,6 +337,13 @@ export default function ViewOneSpace({ user }) {
               })}
             </Typography>
             <Rating name="read-only" value={rating_average} readOnly />
+            <Typography
+              sx={{ fontSize: 15 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              Average Rating: {rating_average ? rating_average : 0}*
+            </Typography>
           </CardContent>
         </Card>
       </Paper>

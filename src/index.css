@@ -1,54 +1,94 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'CostarBrownRegular',sans-serif;
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
   background-color: #fcfcfc;
 }
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  font-weight: bold;
 }
 .navbar {
-  /* height: 200px;  */
+  /* height: 200; */
+  padding: 0 70px;
   background-color: #fef7e5;
-  position: relative; 
+  position: relative;
   display:flex;
-  align-items:flex-start;
-  justify-content:center || space-around || space-evenly;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  min-width: 100vh;
+  line-height: 1.1875rem;
+  font-size: .875rem;
+  font-family: 'CostarBrownRegular',sans-serif;
 }
 
-.navbar-brand {
+input,
+textarea,
+button {
+border:none;
+padding: 0.5rem;
+border-radius: 4px;
+color:#2f234f;
+font-weight: bold;
+font-family: 'CostarBrownRegular',sans-serif;
+font-size: 2rem;
+display: flex;
 }
+
+label,
+section {
+border:none;
+padding: 0.5rem;
+border-radius: 4px;
+color:darkslateblue;
+font-family: 'CostarBrownRegular',sans-serif;
+font-size: 1.5rem;
+display: flex;
+}
+
+img {
+  margin: auto;
+  float: auto;
+  width: auto;
+  height: auto;
+  max-width:100%;
+}
+.navbar-brand {
+font-weight: bold;
+font-size: 25px;
+margin: 30px 15px;
+}
+
+.nav-link {
+  font-weight: 200;
+  font-size: 30px;
+  margin: 30px 15px;
+  }
 
 .menu-icon {
   display: none;
 }
+
+
 .nav-elements {
+
 }
 .nav-elements ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+
 }
 .nav-elements ul li:not(:last-child) {
   margin-right: 60px;
@@ -107,6 +147,15 @@ body {
   }
 }
 
+/* Auth-links */
+
+.auth-link {
+  font-size: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    display: contents;
+}
 
 /* .searchfilterunderlayimage {
   background-image: url("./assets/image.JPG");

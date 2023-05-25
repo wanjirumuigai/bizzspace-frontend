@@ -8,18 +8,18 @@ import Typography from "@mui/material/Typography";
 
 import { useNavigate } from "react-router-dom";
 
-export default function SpaceCard() {
-  const [spaces, setSpaces] = useState([]);
+export default function SpaceCard({ spaces, setSpaces }) {
+  // const [spaces, setSpaces] = useState([]);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("/spaces")
-      .then((res) => res.json())
-      .then((data) => {
-        setSpaces(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/spaces")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setSpaces(data);
+  //     });
+  // }, []);
 
   function handleView(id) {
     navigate(`/spaces/${id}`);
@@ -30,6 +30,7 @@ export default function SpaceCard() {
       {spaces.map((space) => {
         return (
           <Card
+            key={space.id}
             sx={{ maxWidth: 345 }}
             className="cardMedia"
             onClick={() => handleView(space.id)}
