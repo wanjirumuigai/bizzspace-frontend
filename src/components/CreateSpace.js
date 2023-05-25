@@ -54,7 +54,11 @@ function CreateSpace({ user }) {
         <section>
           <h2> Add Your Property </h2>
         </section>
-
+        {errors ? (
+        <p style={{ textAlign: "center", margin: "10px auto", color: "red" }}>
+          {errors}
+        </p>
+      ) : null}
         <form className="row g-3 align-items-left" onSubmit={handleSubmit}>
           <div className="mb-1">
             <label htmlFor="name" className="form-label">
