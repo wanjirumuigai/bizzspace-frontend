@@ -18,6 +18,7 @@ function Home() {
       .then((res) => res.json())
       .then((data) => {
         setSpaces(data);
+        setSearchItems(data);
       });
   }, []);
 
@@ -43,20 +44,13 @@ function Home() {
             <option value="Kisumu">Kisumu</option>
             <option value="Mombasa">Mombasa</option>
           </select> */}
-          {/* <Search handleSearch={handleSearch} /> */}
-
-          <input
-            id="searchinput"
-            type="text"
-            name="search"
-            placeholder="🔍Search..."
-          />
+          <Search handleSearch={handleSearch} />
         </div>
         <div class="search-filter-overlay"></div>
       </div>
 
       <div className="card-body menu-container">
-        <SpaceContainer spaces={spaces} setSpaces={setSpaces} />
+        <SpaceContainer spaces={searchItems} setSpaces={setSpaces} />
       </div>
     </div>
   );

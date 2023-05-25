@@ -23,7 +23,9 @@ import {
 export default function ViewOneSpace({ user }) {
   const [spaces, setSpaces] = useState([]);
   const [value, setValue] = useState([]);
-  const rating_average = value.reduce((a, b) => a + b, 0) / value.length;
+  const rating_average = Math.round(
+    value.reduce((a, b) => a + b, 0) / value.length
+  );
   const [rating, setRating] = useState(0);
 
   const [comments, setComments] = useState([]);
@@ -290,6 +292,13 @@ export default function ViewOneSpace({ user }) {
               })}
             </Typography>
             <Rating name="read-only" value={rating_average} readOnly />
+            <Typography
+              sx={{ fontSize: 11 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              {rating_average}* rating
+            </Typography>
           </CardContent>
         </Card>
       </Paper>
