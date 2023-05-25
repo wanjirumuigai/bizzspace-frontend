@@ -13,19 +13,13 @@ function Search({ handleSearch }) {
           placeholder="Search..."
           aria-label="Search"
           aria-describedby="search-space"
-          style={{"height": "50px"}}
+          style={{ height: "50px" }}
+          onKeyUp={handleKeyUp}
         />
         <span className="input-group-text span-search" id="search-space">
           Search
         </span>
       </div>
-      {/* <label>
-        <input
-          onKeyUp={handleKeyUp}
-          className="searchTerm form-control"
-          placeholder="Search space..."
-        ></input>
-      </label> */}
     </div>
   );
 }
