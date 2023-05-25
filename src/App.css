@@ -1,3 +1,16 @@
+/* NavBar */
+.currentUser {
+  margin: auto 100px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 30px 15px;
+}
+
 .App {
   text-align: center;
 }
@@ -56,7 +69,6 @@ button {
 }
 Button.add {
   background-color: #89ec89;
-
 }
 /* Button.remove {
   background-color: red;
@@ -64,14 +76,13 @@ Button.add {
 .booked {
   color: red;
   text-decoration: line-through;
-
 }
 #lease-cost {
-  color:"#fff";
- background-color: purple;
- width: 100px;
- height: 50px;
- font-size: 40px;
+  color: "#fff";
+  background-color: purple;
+  width: 100px;
+  height: 50px;
+  font-size: 40px;
 }
 
 @keyframes App-logo-spin {

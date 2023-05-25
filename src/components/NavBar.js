@@ -10,61 +10,93 @@ function NavBar({ user, onLogout }) {
   }
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="navbar-brand">
-          {/* <img src= {Logo} alt="logo"/> */}
-        </div>
-        <div className="nav-elements">
-          <ul>
-            <li>
-              <NavLink className="nav-link" exact to="/">
-                {" "}
-                Home{" "}
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink className="nav-link" to="/space/new">
-                {" "}
-                Add A Property{" "}
-              </NavLink>
-            </li>
-
-            <li>
-              <img src={Logo} alt="logo" />
-            </li>
-
-            <li>
-              <NavLink className="nav-link" to="/reports">
-                {" "}
-                Property DashBoard{" "}
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink className="nav-link" to="/contact">
-                {" "}
-                Contact{" "}
-              </NavLink>
-            </li>
-
-            <li>
-              {/* <NavLink className="nav-link" to="/login">Login / SignUp</NavLink> */}
-              {!user ? (
-                <NavLink className="nav-link" to="/login">
-                  Login / SignUp
+    <div id="site-navbar">
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid nav-container">
+          <p className="navbar-brand">BizzSpace</p>
+          {user ? <p className="currentUser">Hi, {user.user.first_name}</p> : null}
+          <div
+            className="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Home
                 </NavLink>
-              ) : (
-                <NavLink className="nav-link" onClick={handleLogout}>
-                  Logout
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/space/new">
+                  Add Property
                 </NavLink>
-              )}
-            </li>
-          </ul>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/reports">
+                  Reports
+                </NavLink>
+              </li>
+              {/* <li className="nav-item">
+                <NavLink className="nav-link" to="/about">
+                  Property Dashboard
+                </NavLink>
+              </li> */}
+              <li className="nav-item">
+                {!user ? (
+                  <NavLink className="nav-link" to="/login">
+                    Login / SignUp
+                  </NavLink>
+                ) : (
+                  <NavLink className="nav-link" onClick={handleLogout}>
+                    Logout
+                  </NavLink>
+                )}
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
+    // <nav className="navbar">
+    //   <div className="nav-elements">
+    //     <ul>
+    //       <li>
+    //         <NavLink className="nav-link" exact to="/">
+    //           Home
+    //         </NavLink>
+    //       </li>
+
+    //       <li>
+    //         <NavLink className="nav-link" to="/space/new">
+    //           Add A Property
+    //         </NavLink>
+    //       </li>
+
+    //       <li>
+    //         <NavLink className="nav-link" to="/reports">
+    //           Property DashBoard
+    //         </NavLink>
+    //       </li>
+
+    //       <li>
+    //         <NavLink className="nav-link" to="/contact">
+    //           Contact
+    //         </NavLink>
+    //       </li>
+
+    //       <li>
+    //         {!user ? (
+    //           <NavLink className="nav-link" to="/login">
+    //             Login / SignUp
+    //           </NavLink>
+    //         ) : (
+    //           <NavLink className="nav-link" onClick={handleLogout}>
+    //             Logout
+    //           </NavLink>
+    //         )}
+    //       </li>
+    //     </ul>
+    //   </div>
+    // </nav>
   );
 }
 export default NavBar;
