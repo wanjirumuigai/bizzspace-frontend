@@ -73,7 +73,7 @@ export default function ViewOneSpace({ user }) {
         });
       }
     });
-  }, [spaces.is_taken]);
+  }, [spaces.is_taken, rating]);
 
   function handleBooking() {
     fetch(`${url}/spaces/${id}`, {
