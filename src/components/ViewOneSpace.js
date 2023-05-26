@@ -36,6 +36,7 @@ export default function ViewOneSpace({ user }) {
   const [open, setOpen] = useState(false);
   const [deleteData, setDeleteData] = useState({});
   const navigate = useNavigate();
+  const url = "https://bizzspace-api.onrender.com/";
 
   const Img = styled("img")({
     margin: "auto",
@@ -53,7 +54,7 @@ export default function ViewOneSpace({ user }) {
   }));
 
   useEffect(() => {
-    fetch(`/spaces/${id}`, {
+    fetch(`${url}/spaces/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -74,18 +75,8 @@ export default function ViewOneSpace({ user }) {
     });
   }, [spaces.is_taken]);
 
-  // useEffect(() => {
-  //   fetch(`/spaces/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setSpaces(data);
-  //       setValue(data.reviews.map((item) => item.rating));
-  //       setComments(data.reviews.map((item) => item.comment));
-  //     });
-  // }, [spaces.is_taken]);
-
   function handleBooking() {
-    fetch(`/spaces/${id}`, {
+    fetch(`${url}/spaces/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -105,7 +96,7 @@ export default function ViewOneSpace({ user }) {
     setRating(e.target.value);
   }
   function handleSubmit() {
-    fetch(`/reviews`, {
+    fetch(`${url}/reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -132,7 +123,7 @@ export default function ViewOneSpace({ user }) {
     setDeleteData(data);
   }
   function deleteSpace() {
-    fetch(`/spaces/${id}`, {
+    fetch(`${url}/spaces/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
