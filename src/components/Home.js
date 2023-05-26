@@ -15,7 +15,7 @@ function Home() {
   };
 
   useEffect(() => {
-    fetch(`${url}/spaces`)
+    fetch("https://bizzspace-api.onrender.com/spaces")
       .then((res) => res.json())
       .then((data) => {
         setSpaces(data);
