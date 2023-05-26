@@ -13,14 +13,6 @@ export default function SpaceCard({ spaces, setSpaces }) {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   fetch("/spaces")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setSpaces(data);
-  //     });
-  // }, []);
-
   function handleView(id) {
     navigate(`/spaces/${id}`);
   }
