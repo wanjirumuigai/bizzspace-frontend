@@ -19,8 +19,8 @@ const buttonStyle = {
   fontWeight: "bold",
 };
 
-export default function Login({onLogin}) {
-  const navigate = useNavigate()
+export default function Login({ onLogin }) {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState();
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -36,7 +36,7 @@ export default function Login({onLogin}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/login", {
+    fetch("https://bizzspace-api.onrender.com//login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export default function Login({onLogin}) {
             password: "",
           });
         });
-        navigate("/")
+        navigate("/");
       } else {
         res.json().then((err) => setErrors(err.error));
       }
@@ -115,7 +115,10 @@ export default function Login({onLogin}) {
         </form>
       </div>
       <p className="to-auth">
-        Don't have an account? <NavLink className="auth-link nav-link" to="/signup">SignUp</NavLink>
+        Don't have an account?{" "}
+        <NavLink className="auth-link nav-link" to="/signup">
+          SignUp
+        </NavLink>
       </p>
     </>
   );

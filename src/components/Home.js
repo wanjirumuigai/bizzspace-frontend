@@ -5,6 +5,7 @@ import Search from "./Search";
 function Home() {
   const [spaces, setSpaces] = useState([]);
   const [searchItems, setSearchItems] = useState([]);
+  const url = "https://bizzspace-api.onrender.com/";
   const searchStyle = {
     // display: "flex",
     // padding: "20px",
@@ -14,7 +15,7 @@ function Home() {
   };
 
   useEffect(() => {
-    fetch("/spaces")
+    fetch(`${url}/spaces`)
       .then((res) => res.json())
       .then((data) => {
         setSpaces(data);

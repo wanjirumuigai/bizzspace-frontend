@@ -12,6 +12,7 @@ const formStyle = {
 function CreateSpace({ user }) {
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
+  const url = "https://bizzspace-api.onrender.com/";
   const [formData, setFormData] = useState({
     name: "",
     size: "",
@@ -31,7 +32,7 @@ function CreateSpace({ user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/spaces", {
+    fetch(`${url}/spaces`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,10 +56,10 @@ function CreateSpace({ user }) {
           <h2> Add Your Property </h2>
         </section>
         {errors ? (
-        <p style={{ textAlign: "center", margin: "10px auto", color: "red" }}>
-          {errors}
-        </p>
-      ) : null}
+          <p style={{ textAlign: "center", margin: "10px auto", color: "red" }}>
+            {errors}
+          </p>
+        ) : null}
         <form className="row g-3 align-items-left" onSubmit={handleSubmit}>
           <div className="mb-1">
             <label htmlFor="name" className="form-label">
