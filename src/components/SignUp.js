@@ -20,7 +20,7 @@ const buttonStyle = {
 
 export default function SignUp() {
   const [user, setUser] = useState(null);
-  const [errors, setErrors] = useState(null)
+  const [errors, setErrors] = useState(null);
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -31,7 +31,7 @@ export default function SignUp() {
     role: "",
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleChange(e) {
     const name = e.target.name;
@@ -46,7 +46,7 @@ export default function SignUp() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/signup", {
+    fetch("https://bizzspace-api.onrender.com//signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,8 +75,14 @@ export default function SignUp() {
 
   return (
     <>
-      <h2 style={{"textAlign": "center","margin": "30px auto"}}>BizzSpace SignUp</h2>
-      {errors ? <p style={{"textAlign": "center","margin": "10px auto", "color": "red"}}>{errors}</p> : null}
+      <h2 style={{ textAlign: "center", margin: "30px auto" }}>
+        BizzSpace SignUp
+      </h2>
+      {errors ? (
+        <p style={{ textAlign: "center", margin: "10px auto", color: "red" }}>
+          {errors}
+        </p>
+      ) : null}
       <div style={signupFormStyle}>
         <form className="row g-3" onSubmit={handleSubmit}>
           {/* Names */}
@@ -198,7 +204,10 @@ export default function SignUp() {
         </form>
       </div>
       <p className="to-auth">
-        Already have an account? <NavLink className="auth-link nav-link" to="/login">Login</NavLink>
+        Already have an account?{" "}
+        <NavLink className="auth-link nav-link" to="/login">
+          Login
+        </NavLink>
       </p>
     </>
   );
