@@ -33,26 +33,26 @@ function Home() {
   }
 
   return (
-    <div className="card" style={searchStyle}>
-      {/* <img src="..." className="card-img-top" alt="..."/>THIS WILL BE BACKGROUND IMAGE */}
-      <div className="searchfilterunderlayimage">
-        <div className="card-body stylingfiltersearch">
-          <h1 id="h1-in-search-div">Discover your next business space</h1>
-          {/* <select name="filter">
+      <div className="card" style={searchStyle}>
+        {/* <img src="..." className="card-img-top" alt="..."/>THIS WILL BE BACKGROUND IMAGE */}
+        <div className="searchfilterunderlayimage">
+          <div className="card-body stylingfiltersearch">
+            <h1 id="h1-in-search-div">Discover your next business space</h1>
+            {/* <select name="filter">
             <option value="All">Filter listings by city</option>
             <option value="Nairobi">Nairobi</option>
             <option value="Kisumu">Kisumu</option>
             <option value="Mombasa">Mombasa</option>
           </select> */}
-          <Search handleSearch={handleSearch} />
+            <Search handleSearch={handleSearch} />
+          </div>
+          <div className="search-filter-overlay"></div>
         </div>
-        <div className="search-filter-overlay"></div>
-      </div>
 
-      <div className="card-body menu-container">
-        <SpaceContainer spaces={searchItems} setSpaces={setSpaces} />
+        <div className="card-body menu-container">
+          <SpaceContainer spaces={searchItems} setSpaces={setSpaces} />
+        </div>
       </div>
-    </div>
   );
 }
 

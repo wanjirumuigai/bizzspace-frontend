@@ -134,8 +134,6 @@ export default function ViewOneSpace({ user }) {
       .then(() => navigate("/"));
   }
 
-  console.log(spaces.user_id, user.user.id);
-
   return (
     <>
       <Paper
