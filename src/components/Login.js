@@ -36,7 +36,7 @@ export default function Login({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("https://bizzspace-api.onrender.com//login", {
+    fetch("https://bizzspace-api.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

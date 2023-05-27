@@ -46,7 +46,7 @@ export default function SignUp() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("https://bizzspace-api.onrender.com//signup", {
+    fetch("https://bizzspace-api.onrender.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,6 +66,7 @@ export default function SignUp() {
             email: "",
             role: "",
           });
+          navigate("/")
         });
       } else {
         res.json().then((err) => setErrors(err.error));
