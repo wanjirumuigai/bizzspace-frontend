@@ -26,7 +26,7 @@ function CreateSpace({ user }) {
     return `${this.street}, ${this.building}, ${this.floor_name}, ${this.room_no}, ${this.town}`;
   }
 
-  const url = "http://127.0.0.1:3000";
+  const url = "https://bizzspace-api.onrender.com";
   const [formData, setFormData] = useState({
     name: "",
     location: "",

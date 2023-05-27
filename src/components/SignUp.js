@@ -45,7 +45,7 @@ export default function SignUp({onSignup}) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:3000/signup", {
+    fetch("https://bizzspace-api.onrender.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

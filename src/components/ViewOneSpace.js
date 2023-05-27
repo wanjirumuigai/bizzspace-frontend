@@ -36,7 +36,7 @@ export default function ViewOneSpace({ user }) {
   const [open, setOpen] = useState(false);
   const [deleteData, setDeleteData] = useState({});
   const navigate = useNavigate();
-  const url = "http://127.0.0.1:3000";
+  const url = "https://bizzspace-api.onrender.com";
 
   const Img = styled("img")({
     margin: "auto",
