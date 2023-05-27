@@ -26,7 +26,7 @@ function CreateSpace({ user }) {
     return `${this.street}, ${this.building}, ${this.floor_name}, ${this.room_no}, ${this.town}`;
   }
 
-  const url = "https://bizzspace-api.onrender.com/";
+  const url = "https://bizzspace-api.onrender.com";
   const [formData, setFormData] = useState({
     name: "",
     location: "",
@@ -195,7 +195,7 @@ function CreateSpace({ user }) {
               required
             />
           </div>
-{/* 
+{/*
           <div className="col-md-6">
             <label htmlFor="location" className="form-label">
               {" "}

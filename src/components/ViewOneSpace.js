@@ -36,7 +36,7 @@ export default function ViewOneSpace({ user }) {
   const [open, setOpen] = useState(false);
   const [deleteData, setDeleteData] = useState({});
   const navigate = useNavigate();
-  const url = "https://bizzspace-api.onrender.com/";
+  const url = "https://bizzspace-api.onrender.com";
 
   const Img = styled("img")({
     margin: "auto",
@@ -114,7 +114,6 @@ export default function ViewOneSpace({ user }) {
       .then((data) => {
         setComments([...comments, data.comment]);
         setRating([...rating, data.rating]);
-        // window.location.reload(false);
       });
   }
 
@@ -229,7 +228,7 @@ export default function ViewOneSpace({ user }) {
                     variant="outlined"
                     color="error"
                     onClick={openDelete}
-                    sx={{ width: "200px", fontWeight: 600, fontSize: "20px" }}
+                    sx={{ width: "200px", fontWeight: 600, fontSize: "18px" }}
                   >
                     Delete Listing
                   </Button>
