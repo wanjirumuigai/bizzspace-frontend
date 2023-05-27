@@ -14,7 +14,8 @@ function App() {
 
   useEffect(() => {
       setUser(JSON.parse(localStorage.getItem("user")))
-  }, [user])
+      console.log(user)
+  }, [])
 
   function onLogin(user) {
     setUser(user);
