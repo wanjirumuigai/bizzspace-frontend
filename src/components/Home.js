@@ -5,7 +5,7 @@ import Search from "./Search";
 function Home() {
   const [spaces, setSpaces] = useState([]);
   const [searchItems, setSearchItems] = useState([]);
-  const url = "https://bizzspace-api.onrender.com";
+  const url = "http://127.0.0.1:3000";
   const searchStyle = {
     // display: "flex",
     // padding: "20px",

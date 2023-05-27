@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "./bizlogo.png";
 
 function NavBar({ user, onLogout }) {
   const navigate = useNavigate();

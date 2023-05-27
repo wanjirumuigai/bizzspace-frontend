@@ -36,7 +36,7 @@ export default function Login({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("https://bizzspace-api.onrender.com/login", {
+    fetch("http://127.0.0.1:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,6 @@ export default function Login({ onLogin }) {
       if (res.ok) {
         res.json().then((user) => {
           onLogin(user);
-          // localStorage.setItem("jwt", user.jwt)
           setLoginForm({
             email: "",
             password: "",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "../App.css";
 
@@ -12,12 +12,18 @@ import CreateSpace from "./CreateSpace";
 function App() {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+      setUser(JSON.parse(localStorage.getItem("user")))
+  }, [user])
+
   function onLogin(user) {
     setUser(user);
+    localStorage.setItem("user", JSON.stringify(user))
   }
 
   function onLogout() {
     setUser(null);
+    localStorage.removeItem("user")
   }
 
   return (
@@ -32,7 +38,7 @@ function App() {
           }
         />
         {user ? <Route path="/spaces/new" element={<CreateSpace user={user}/>} /> : null}
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp onSignup={onLogin}/>} />
         <Route path="/login" element={<Login onLogin={onLogin} />} />
       </Routes>
     </div>
