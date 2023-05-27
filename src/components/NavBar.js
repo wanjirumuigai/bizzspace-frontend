@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "./bizlogo.png";
 
 function NavBar({ user, onLogout }) {
   const navigate = useNavigate();
@@ -56,47 +55,6 @@ function NavBar({ user, onLogout }) {
         </div>
       </nav>
     </div>
-    // <nav className="navbar">
-    //   <div className="nav-elements">
-    //     <ul>
-    //       <li>
-    //         <NavLink className="nav-link" exact to="/">
-    //           Home
-    //         </NavLink>
-    //       </li>
-
-    //       <li>
-    //         <NavLink className="nav-link" to="/space/new">
-    //           Add A Property
-    //         </NavLink>
-    //       </li>
-
-    //       <li>
-    //         <NavLink className="nav-link" to="/reports">
-    //           Property DashBoard
-    //         </NavLink>
-    //       </li>
-
-    //       <li>
-    //         <NavLink className="nav-link" to="/contact">
-    //           Contact
-    //         </NavLink>
-    //       </li>
-
-    //       <li>
-    //         {!user ? (
-    //           <NavLink className="nav-link" to="/login">
-    //             Login / SignUp
-    //           </NavLink>
-    //         ) : (
-    //           <NavLink className="nav-link" onClick={handleLogout}>
-    //             Logout
-    //           </NavLink>
-    //         )}
-    //       </li>
-    //     </ul>
-    //   </div>
-    // </nav>
   );
 }
 export default NavBar;

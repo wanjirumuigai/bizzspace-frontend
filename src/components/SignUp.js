@@ -18,8 +18,7 @@ const buttonStyle = {
   fontWeight: "bold",
 };
 
-export default function SignUp() {
-  const [user, setUser] = useState(null);
+export default function SignUp({onSignup}) {
   const [errors, setErrors] = useState(null);
   const [formData, setFormData] = useState({
     first_name: "",
@@ -56,7 +55,7 @@ export default function SignUp() {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          setUser(user);
+          onSignup(user);
           setFormData({
             first_name: "",
             last_name: "",
