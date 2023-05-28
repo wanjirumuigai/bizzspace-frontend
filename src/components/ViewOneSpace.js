@@ -115,6 +115,7 @@ export default function ViewOneSpace({ user }) {
         setComments([...comments, data.comment]);
         setRating([...rating, data.rating]);
       });
+    // document.getElementById("fullWidth").value = "";
   }
 
   function openDelete(data) {
@@ -248,6 +249,7 @@ export default function ViewOneSpace({ user }) {
             fullWidth
             label="Post a review"
             id="fullWidth"
+            value={review}
             onChange={handleChange}
           />
         </Box>

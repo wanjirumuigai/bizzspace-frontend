@@ -8,22 +8,23 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import ViewOneSpace from "./ViewOneSpace";
 import CreateSpace from "./CreateSpace";
+import Reports from "./Reports";
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-      setUser(JSON.parse(localStorage.getItem("user")))
-  }, [])
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
 
   function onLogin(user) {
     setUser(user);
-    localStorage.setItem("user", JSON.stringify(user))
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
   function onLogout() {
     setUser(null);
-    localStorage.removeItem("user")
+    localStorage.removeItem("user");
   }
 
   return (
@@ -37,9 +38,12 @@ function App() {
             user ? <ViewOneSpace user={user} /> : <Login onLogin={onLogin} />
           }
         />
-        {user ? <Route path="/spaces/new" element={<CreateSpace user={user}/>} /> : null}
-        <Route path="/signup" element={<SignUp onSignup={onLogin}/>} />
+        {user ? (
+          <Route path="/spaces/new" element={<CreateSpace user={user} />} />
+        ) : null}
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login onLogin={onLogin} />} />
+        <Route path="/reports" element={<Reports user={user} />} />
       </Routes>
     </div>
   );
