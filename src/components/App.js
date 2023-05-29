@@ -43,7 +43,10 @@ function App() {
         ) : null}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login onLogin={onLogin} />} />
-        <Route path="/reports" element={<Reports user={user} />} />
+        <Route
+          path="/reports"
+          element={user ? <Reports user={user} /> : <Login onLogin={onLogin} />}
+        />
       </Routes>
     </div>
   );

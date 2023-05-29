@@ -40,7 +40,7 @@ const Reports = ({ user }) => {
       },
     }).then((res) => {
       if (!res.ok) {
-        navigate(`${url}/available`);
+        navigate("/login");
       } else {
         res.json().then((data) => {
           setAvailable(data);
