@@ -6,9 +6,10 @@ const Reports = ({ user }) => {
   const [available, setAvailable] = useState([]);
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
+  const url = "https://bizzspace-api.onrender.com";
 
   useEffect(() => {
-    fetch("/booked", {
+    fetch(`${url}/booked`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +40,7 @@ const Reports = ({ user }) => {
       },
     }).then((res) => {
       if (!res.ok) {
-        navigate("/login");
+        navigate(`${url}/available`);
       } else {
         res.json().then((data) => {
           setAvailable(data);
