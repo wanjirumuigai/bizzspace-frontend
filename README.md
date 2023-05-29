@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+<div align="center">
+    <br />
+    <h1 style="font-weight: bold">BIZZSPACE</h1>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="#description">Project Description</a> •
+  <a href="#live-link">Live Link</a> •
+  <a href="#setup">Project Setup</a> •
+  <a href="#authors">Authors</a> •
+  <a href="#license">License</a>
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
+## Project Description
+We proudly present a full-stack digital solution to enable anyone seeking real-estate space to set up shop and conduct their on-premise business. Whether you need an office space, warehouse space, shop space, all at the click of a button, you can browse through our listings to enable you find and locate a business space of your choice to occupy! Looking to lease your commercial space? Our application provides a platform to enable you showcase your commercial property to potential tenants and connect with them.
 
-### `npm start`
+We provide a very simple, intuitive interface to enable hassle-free connections between commercial space owners and those looking to lease commercial spaces. Convenience is what we aim to provide by removing the barriers and challenges faced by those looking for business spaces in the traditional way of word-of-mouth which is plagued which challenges such as not having a wide base to quickly check through potential spaces.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We make it quick and easy to launch the search for a space by enabling tenants find and explore visuals of listed spaces, location of the listed spaces, all relevant space details as well as a way to connect tenants with the respective property owners all within the platform.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Welcome to the 21st century sphere of convenience and speed. Discover and explore a more productive and quick way to ease the search for a business space with **Bizzspace**!
 
-### `npm test`
+![Bizzspace](https://github.com/ayoraowen/images-upload/assets/97278646/0b7def0c-8358-4157-b182-a7ac3dbb1a23)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Live Link
+The project is hosted on Render.com and can be launched here https://bizzspace-react.onrender.com/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Setup
+To view this application please proceed as follows:
+1.	Run npm install in your terminal in order to install all the app's dependencies.
+2.	In a new terminal, run npm start. This will run this React app on port 4000. In this React application, the data passed is hosted in a RESTful Rails backend application which this React app depends on. 
+Please note that the backend app serving data to this app will be launched on http://localhost:3000 and should be run before launching this project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Authors
+This project is a synthesis of the following contributors:
+- [Pauline Muigai - Full stack Developer](https://github.com/wanjirumuigai)
+- [Charles Swaleh - Full stack Developer](https://github.com/mashm3ll0w)
+- [Evelyne Kamau - Full stack Developer](https://github.com/Eve-Kamau)
+- [Edwin Njoroge - Full stack Developer](https://github.com/githahu)
+- [Owen Ayora - Full stack Developer](https://github.com/ayoraowen)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
+Copyright © <a href="#authors">Authors</a>. All rights reserved.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This software is licensed under the [MIT](https://github.com/wanjirumuigai/bizzspace-frontend/blob/main/README.md) License
