@@ -37,6 +37,7 @@ export default function ViewOneSpace({ user }) {
   const [deleteData, setDeleteData] = useState({});
   const navigate = useNavigate();
   const url = "https://bizzspace-api.onrender.com";
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const Img = styled("img")({
     margin: "auto",
@@ -70,6 +71,7 @@ export default function ViewOneSpace({ user }) {
           setSpaces(data);
           setValue(data.reviews.map((item) => item.rating));
           setComments(data.reviews.map((item) => item.comment));
+          setIsLoaded(true);
         });
       }
     });
@@ -115,6 +117,7 @@ export default function ViewOneSpace({ user }) {
         setComments([...comments, data.comment]);
         setRating([...rating, data.rating]);
       });
+    // document.getElementById("fullWidth").value = "";
   }
 
   function openDelete(data) {
@@ -133,7 +136,7 @@ export default function ViewOneSpace({ user }) {
       .then((res) => res.json())
       .then(() => navigate("/"));
   }
-
+  if (!isLoaded) return <h3>Loading ...</h3>;
   return (
     <>
       <Paper
@@ -248,6 +251,7 @@ export default function ViewOneSpace({ user }) {
             fullWidth
             label="Post a review"
             id="fullWidth"
+            value={review}
             onChange={handleChange}
           />
         </Box>
